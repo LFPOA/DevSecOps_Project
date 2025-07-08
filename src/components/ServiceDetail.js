@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import EnviromentRow from "./EnviromentRow";
-import MainLayout from "../Layouts/MainLayout";
 
 // 테스트용 하드코딩 데이터
 const services = [
@@ -19,6 +18,14 @@ const services = [
       { name: 'Stage', date: '2020.20.20', status: 'error' },
       { name: 'Prod', date: '2020.20.20', status: 'success' }
     ]
+  },
+  {
+    name: 'Map_service',
+    environments: [
+      { name: 'Dev', date: '2020.20.20', status: 'success' },
+      { name: 'Stage', date: '2020.20.20', status: 'error' },
+      { name: 'Prod', date: '2020.20.20', status: 'success' }
+    ]
   }
 ];
 
@@ -30,9 +37,7 @@ const ServiceDetail = () => {
   if (!service) {
     return <div className="p-6 text-red-600">Service not found</div>;
   }
-
   return (
-    <MainLayout selectedMenu={"Dashboard"} onMenuSelect={() => navigate("/")}>
       <div className="bg-white rounded-lg shadow-sm border">
         <div className="p-6 border-b flex justify-between items-center">
           <h1 className="text-2xl font-semibold text-gray-800">Service Detail</h1>
@@ -60,7 +65,6 @@ const ServiceDetail = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
   );
 };
 export default ServiceDetail;

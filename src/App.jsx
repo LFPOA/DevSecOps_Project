@@ -1,16 +1,17 @@
-import Dashboard from './components/Dashboard';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ServiceDetail from './components/ServiceDetail';
+import { BrowserRouter, useRoutes } from "react-router-dom";
+import routes from "./routes";
+
+const AppRoutes = () => {
+  const element = useRoutes(routes);
+  return element;
+}
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard/>}/>
-        <Route path='/service/:name' element={<ServiceDetail/>}/>
-      </Routes>
+      <AppRoutes />
     </BrowserRouter>
   );
 }
 
-export default App
+export default App;

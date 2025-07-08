@@ -1,25 +1,32 @@
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { Monitor, GitBranch, FileText, Settings } from "lucide-react";
+import { HomeMenuItems } from "../components/constants/MenuItems";
+import { ServiceMenuItems } from "../components/constants/MenuItems";
 
-const menuItems = [
-  { name: "Dashboard", icon: Monitor },
-  { name: "Pipelines", icon: GitBranch },
-  { name: "Repos", icon: FileText },
-  { name: "Config", icon: Settings }
-];
+const MainLayout = () => {
 
-const MainLayout = ({ selectedMenu, onMenuSelect, children }) => {
+  const location = useLocation();
+
+  const renderSidebar = () => {
+    if (location.pathname.startsWith("/service")) 
+      return <Sidebar
+              menuItems={ServiceMenuItems}
+            />
+    else
+      return <Sidebar
+              menuItems={HomeMenuItems}
+              />
+  }
+
   return (
     <div className="min-h-screen bg-gray-100">
-      <Header title="Devops" />
+      <Header title="DevSecOps" />
       <div className="flex">
-        <Sidebar
-          menuItems={menuItems}
-          selectedMenu={selectedMenu}
-          onMenuSelect={onMenuSelect}
-        />
-        <div className="flex-1 p-6">{children}</div>
+        {renderSidebar()}
+        <div className="flex-1 p-6">
+          <Outlet/>
+        </div>
       </div>
     </div>
   );

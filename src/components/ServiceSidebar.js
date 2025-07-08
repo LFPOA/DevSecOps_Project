@@ -1,8 +1,8 @@
-import SidebarMenuItem from "./SidebarMenuItem";
 import { Link } from "react-router-dom";
+import SidebarMenuItem from "./SidebarMenuItem";
 
-function Sidebar ( {menuItems} ) {
-  return (
+function ServiceSidebar ( {menuItems} ) {
+    return (
     <div className="w-64 bg-white border-r border-gray-200 min-h-screen">
       <div className="p-4">
       <nav className="space-y-2">
@@ -10,7 +10,7 @@ function Sidebar ( {menuItems} ) {
           return (
             <Link to={item.path}
                   key={item.name}
-                  >
+            >
               <SidebarMenuItem
               key={item.name}
               item={item}
@@ -22,6 +22,6 @@ function Sidebar ( {menuItems} ) {
     </div>
   </div>
   )
-};
+}
 
-export default Sidebar
+export default ServiceSidebar;
